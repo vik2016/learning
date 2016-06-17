@@ -23,22 +23,35 @@ var myCode = {
         $(document).ready(function () {
             var data = 'http://jsonplaceholder.typicode.com/users';
             $.getJSON(data, function (data) {
-
+               console.log(data)
                 for (var i = 0; i < data.length; i++) {
-                    var myObj = data[i];
-                     myArray = Object.keys(myObj);
-                    $(".outer").append('<li class="names">' + myObj.name + '</li>');
-                    for(var j = 0; j<myArray.length;j++){
-                        console.log(myArray[j])
-                        $('.names').on('click',function(){
-                           // console.log($(this));
-                            $(this).append('<ul class="submenu"><li>'+(myArray[j])+'</li></ul>');
-                            //  $(".outer").append('<li class="names">' + data[i].name + '</li>');
-                        })
-                    }
-                  //  console.log(Object.keys(myObj));
-
+                    var name = data[i].name.slice(0,5);
+                    $(".outer").append('<div class="names">' + name + '<ul class="submenu"></ul></div>');
+                    var myArray = Object.keys(data[i]);
                 }
+                $('.names').on('click',function (e) {
+                    $('this').toggleClass('someClass');
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $('.names').toggleClass('someClass');
+                     if($(this).hasClass('someClass')) {
+                         for (var j = 0; j < myArray.length; j++) {
+                             $('ul').show();
+                             $(this).children('ul').append('<li class="test">' + myArray[j] + '</li>');
+                         }
+                         $('li.test').on('click',function () {
+                             $(this).append('<li class="ok">kam</li>');
+                             console.log('hello')
+                         })
+                     }
+                    else{
+                     $('ul').empty();
+                    }
+
+                });
+
+
+
 
 /*                $('.dropdown .drop').on('mouseover', function () {
                     for (var i = 0; i < data.length; i++) {

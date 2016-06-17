@@ -25,15 +25,43 @@ border: 1px solid;
     cursor: pointer;
 }
 
-.outer li{
+.outer div.names{
     display: inline-block;
     border: solid 1px dodgerblue;
     padding: 2px;
     margin: 1px;
     background-color: dodgerblue;
     color: #ffffff;
+    width: 100px;
 }
-.outer li ul.submenu{
-    background-color: aquamarine;
+ul.submenu {
+    position: absolute;
+    color: red;
+    display: block;
+    /* border: solid 1px red; */
+    height: 50px;
+    display: none;
+}
+ul.submenu li.test{
+    list-style-type: none;
+    border: solid 1px dodgerblue;
+    padding: 4px;
+    color: #1783ec;
+    position: relative;
+    left: -43px;
+    top: -13px;
+    width: 100px;
+    border-top: none;
+    height: 20px;
+}
+ul.submenu li.test:hover{
+color: red;
+}
+ul.submenu li.test li.ok{
+    position: relative;
     color: black;
+    left: 110px;
+    top: -22px;
+    border: solid 1px dodgerblue;
+    padding: 4px;
 }
