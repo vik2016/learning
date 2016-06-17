@@ -5,3 +5,35 @@
 .primary{
 border: 1px solid;
 }
+
+.drop{
+
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+
+}
+.dropdown .name{
+    list-style: none;
+}
+.dropdown .name li{
+
+    background-color:deepskyblue ;
+    cursor: pointer;
+}
+
+.outer li{
+    display: inline-block;
+    border: solid 1px dodgerblue;
+    padding: 2px;
+    margin: 1px;
+    background-color: dodgerblue;
+    color: #ffffff;
+}
+.outer li ul.submenu{
+    background-color: aquamarine;
+    color: black;
+}
