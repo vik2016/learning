@@ -23,52 +23,37 @@ var myCode = {
         $(document).ready(function () {
             var data = 'http://jsonplaceholder.typicode.com/users';
             $.getJSON(data, function (data) {
-                //console.log(data)
-                for (var i = 0; i < data.length; i++) {
+                console.log(data)
+                for (let i = 0; i < data.length; i++) {
                     var name = data[i].name;
-                    $(".outer").append('<div class="names">' + name + '<ul class="submenu"></ul></div>');
-                    var myArray = Object.keys(data[i]);
+                    $(".outer").append('<div class="names" data-id = ' + data[i].id + '>' + name + '<ul class="submenu"></ul></div>');
                 }
-                var someArray = $('.outer').children();
-               // for (var k = 0; k<someArray.length; k++){
-                //    console.log($(someArray[k]).text())
-              //  }
-                $('.names').on('click',function (e) {
+
+                 $('.names').on('click',function (e) {
                     e.preventDefault();
                     e.stopPropagation();
-
-
                     $('.names').toggleClass('someClass');
                     if($(this).hasClass('someClass')) {
                         for (var j = 0; j < data.length; j++) {
                             $('ul').show();
-                           // console.log(data[j]);
-                            console.log(data[j].name +  ' : '+ $(someArray[data[j].id -1]).text())
-
-                            //if($(someArray[data[j].id -1]).text() == data[j].name){
-                                $(this).children('ul').append('<li class="test">' +
-                                    '<div>'+data[j].email+'</div>' +
-                                    '<div>'+data[j].username+'</div>'+
-                                    '</li>');
-                          //  }
-
                         }
-                        $('li.test').on('click',function () {
-                            $(this).append('<li class="ok">kam</li>');
-                            console.log('hello')
-                        })
+                       var returnedId = $(this).attr("data-id");
+                        console.log(returnedId);
+                        $(this).children('ul').append('<li class="test">' +
+                            '<div>'+data[returnedId].email+'</div>' +
+                            '<div>'+data[returnedId].username+'</div>'+
+                            '<div>'+data[returnedId].website+'</div>'+
+                            '<div>'+data[returnedId].phone+'</div>' +
+                            '<div>'+data[returnedId].address.street+'</div>'+
+                            '<div>'+data[returnedId].address.city+'</div>'+
+                            '</li>');
                     }
                     else{
                         $('ul').empty();
                     }
-
-                });
-
+                })
             })
-
-
         });
-
     }
 };
 
