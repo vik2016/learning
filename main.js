@@ -23,55 +23,35 @@ var myCode = {
         $(document).ready(function () {
             var data = 'http://jsonplaceholder.typicode.com/users';
             $.getJSON(data, function (data) {
-               console.log(data)
+                console.log(data)
                 for (var i = 0; i < data.length; i++) {
                     var name = data[i].name.slice(0,5);
                     $(".outer").append('<div class="names">' + name + '<ul class="submenu"></ul></div>');
                     var myArray = Object.keys(data[i]);
                 }
                 $('.names').on('click',function (e) {
-                    $('this').toggleClass('someClass');
                     e.preventDefault();
                     e.stopPropagation();
                     $('.names').toggleClass('someClass');
-                     if($(this).hasClass('someClass')) {
-                         for (var j = 0; j < myArray.length; j++) {
-                             $('ul').show();
-                             $(this).children('ul').append('<li class="test">' + myArray[j] + '</li>');
-                         }
-                         $('li.test').on('click',function () {
-                             $(this).append('<li class="ok">kam</li>');
-                             console.log('hello')
-                         })
-                     }
+                    if($(this).hasClass('someClass')) {
+                        for (var j = 0; j < data.length; j++) {
+                            $('ul').show();
+                            console.log(data[j])
+                            $(this).children('ul').append('<li class="test">' +
+                                '<div>'+data[j].email+'</div>' +
+                                '<div>'+data[j].username+'</div>'+
+                                '</li>');
+                        }
+                        $('li.test').on('click',function () {
+                            $(this).append('<li class="ok">kam</li>');
+                            console.log('hello')
+                        })
+                    }
                     else{
-                     $('ul').empty();
+                        $('ul').empty();
                     }
 
                 });
-
-
-
-
-/*                $('.dropdown .drop').on('mouseover', function () {
-                    for (var i = 0; i < data.length; i++) {
-                        $(".dropdown .name").append('<li>' + data[i].name);
-                        console.log(data[i].name);
-
-                        // $('.name li').on('mouseover',function(){
-
-                            // $(".name ").append('<ul> <li>' + data[i].email);
-                        // })
-                        $(".dropdown .name ").append('<ul> <li>' + data[i].email);
-                        $(".dropdown .name ").append('<ul> <li>' + data[i].address);
-                        $(".dropdown .name ").append('<ul> <li>' + data[i].phone);
-                        $(".dropdown .name ").append('<ul> <li>' + data[i].website);
-                        $(".dropdown .name ").append('<ul> <li>' + data[i].company);
-
-
-                    }
-                })*/
-
 
             })
 
