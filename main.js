@@ -26,7 +26,7 @@ var myCode = {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
                     console.log(i)
-                    var name = data[i].name;
+                    var name = data[i].name.slice(0,8);
                     $(".outer").append('<div class="names" data-id = ' + data[i].id + '>' + name + '<ul class="submenu"></ul></div>');
                 }
                  $('.names').mouseenter(function (e) {
