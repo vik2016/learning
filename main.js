@@ -23,8 +23,8 @@ var myCode = {
         $(document).ready(function () {
             var data = 'http://jsonplaceholder.typicode.com/users';
             $.getJSON(data, function (data) {
-                console.log(data)
-                for (let i = 0; i < data.length; i++) {
+                console.log(data);
+                for (var i = 0; i < data.length; i++) {
                     var name = data[i].name;
                     $(".outer").append('<div class="names" data-id = ' + data[i].id + '>' + name + '<ul class="submenu"></ul></div>');
                 }
@@ -34,18 +34,16 @@ var myCode = {
                     e.stopPropagation();
                     $('.names').toggleClass('someClass');
                     if($(this).hasClass('someClass')) {
-                        for (var j = 0; j < data.length; j++) {
                             $('ul').show();
-                        }
                        var returnedId = $(this).attr("data-id");
                         console.log(returnedId);
                         $(this).children('ul').append('<li class="test">' +
-                            '<div>'+data[returnedId].email+'</div>' +
-                            '<div>'+data[returnedId].username+'</div>'+
-                            '<div>'+data[returnedId].website+'</div>'+
-                            '<div>'+data[returnedId].phone+'</div>' +
-                            '<div>'+data[returnedId].address.street+'</div>'+
-                            '<div>'+data[returnedId].address.city+'</div>'+
+                            '<div>'+data[returnedId-1].email+'</div>' +
+                            '<div>'+data[returnedId-1].username+'</div>'+
+                            '<div>'+data[returnedId-1].website+'</div>'+
+                            '<div>'+data[returnedId-1].phone+'</div>' +
+                            '<div>'+data[returnedId-1].address.street+'</div>'+
+                            '<div>'+data[returnedId-1].address.city+'</div>'+
                             '</li>');
                     }
                     else{
