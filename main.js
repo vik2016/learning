@@ -30,7 +30,7 @@ var myCode = {
                     $(".outer").append('<div class="names" data-id = ' + data[i].id + '>' + name + '<ul class="submenu"></ul></div>');
                 }
                  $('.names').mouseenter(function (e) {
-                     $('ul').empty();
+                    $('ul').empty();
                     e.preventDefault();
                     e.stopPropagation();
                     $('.names').addClass('someClass');

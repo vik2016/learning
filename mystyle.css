@@ -34,6 +34,10 @@ border: 1px solid;
     color: #ffffff;
     width: 100px;
 }
+.outer div.names:hover{
+    background-color: #1048ec;
+    border-bottom: solid 1px #7ac2ff;
+}
 ul.submenu {
     position: absolute;
     color: red;
