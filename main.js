@@ -28,22 +28,21 @@ var myCode = {
                     var name = data[i].name;
                     $(".outer").append('<div class="names" data-id = ' + data[i].id + '>' + name + '<ul class="submenu"></ul></div>');
                 }
-
                  $('.names').on('click',function (e) {
                     e.preventDefault();
                     e.stopPropagation();
                     $('.names').toggleClass('someClass');
                     if($(this).hasClass('someClass')) {
                             $('ul').show();
-                       var returnedId = $(this).attr("data-id");
+                       var returnedId = $(this).attr("data-id")-1;
                         console.log(returnedId);
                         $(this).children('ul').append('<li class="test">' +
-                            '<div>'+data[returnedId-1].email+'</div>' +
-                            '<div>'+data[returnedId-1].username+'</div>'+
-                            '<div>'+data[returnedId-1].website+'</div>'+
-                            '<div>'+data[returnedId-1].phone+'</div>' +
-                            '<div>'+data[returnedId-1].address.street+'</div>'+
-                            '<div>'+data[returnedId-1].address.city+'</div>'+
+                            '<div>'+data[returnedId].email+'</div>' +
+                            '<div>'+data[returnedId].username+'</div>'+
+                            '<div>'+data[returnedId].website+'</div>'+
+                            '<div>'+data[returnedId].phone+'</div>' +
+                            '<div>'+data[returnedId].address.street+'</div>'+
+                            '<div>'+data[returnedId].address.city+'</div>'+
                             '</li>');
                     }
                     else{
