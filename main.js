@@ -25,17 +25,19 @@ var myCode = {
             $.getJSON(data, function (data) {
                 console.log(data);
                 for (var i = 0; i < data.length; i++) {
+                    console.log(i)
                     var name = data[i].name;
                     $(".outer").append('<div class="names" data-id = ' + data[i].id + '>' + name + '<ul class="submenu"></ul></div>');
                 }
-                 $('.names').on('click',function (e) {
+                 $('.names').mouseenter(function (e) {
+                     $('ul').empty();
                     e.preventDefault();
                     e.stopPropagation();
-                    $('.names').toggleClass('someClass');
+                    $('.names').addClass('someClass');
                     if($(this).hasClass('someClass')) {
                             $('ul').show();
                        var returnedId = $(this).attr("data-id")-1;
-                        console.log(returnedId);
+                      //  console.log(returnedId);
                         $(this).children('ul').append('<li class="test">' +
                             '<div>'+data[returnedId].email+'</div>' +
                             '<div>'+data[returnedId].username+'</div>'+
@@ -45,10 +47,9 @@ var myCode = {
                             '<div>'+data[returnedId].address.city+'</div>'+
                             '</li>');
                     }
-                    else{
-                        $('ul').empty();
-                    }
-                })
+                }).mouseleave(function () {
+                     $('ul').empty();
+                 })
             })
         });
     }
