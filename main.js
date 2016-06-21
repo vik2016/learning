@@ -47,7 +47,6 @@ var myCode = {
 
                             //if($(someArray[data[j].id -1]).text() == data[j].name){
                                 $(this).children('ul').append('<li class="test">' +
-
                                     '<div>'+data[j].email+'</div>' +
                                     '<div>'+data[j].username+'</div>'+
                                     '</li>');
